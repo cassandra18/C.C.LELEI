@@ -20,7 +20,7 @@ Currently finishing my degree, running two startups under **LeleiMade Co. Ltd**,
 | 🏘️ Real Estate Management Software | Property management platform built for the African market |
 | ⚡ Virtual Power Plant as a Service | Distributed energy intelligence for communities and businesses |
 
-Both under **[LeleiMade Co. Ltd]([https://cassandra18.github.io](https://github.com/cassandra18/LELEIMADE.CO-PROPERTY-MANAGEMENT-SAAS))** — my attempt to build infrastructure that outlasts me.
+Both under **[LeleiMade Co. Ltd](https://github.com/cassandra18/LELEIMADE.CO-PROPERTY-MANAGEMENT-SAAS)** — my attempt to build infrastructure that outlasts me.
 
 ---
 
