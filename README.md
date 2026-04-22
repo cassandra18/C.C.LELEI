@@ -46,7 +46,7 @@ I bring that same attentiveness to every system I build.
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-cassandra18.github.io-C0152B?style=flat-square)](https://github.com/cassandra18/C.C.LELEI)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-1A2E5A?style=flat-square&logo=linkedin)](https://linkedin.com/in/cassandra-lelei)
-[![Email](https://img.shields.io/badge/Email-Say%20hello-E8621A?style=flat-square)](leleimade@gmail.com)
+[![Email](https://img.shields.io/badge/Email-Say%20hello-E8621A?style=flat-square)](mailto:leleimade@gmail.com)
 
 ---
 
