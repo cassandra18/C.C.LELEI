@@ -34,3 +34,67 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 
+//  ── IMAGE  ──
+
+
+const modal = document.getElementById("cert-modal");
+const modalImg = document.getElementById("modal-img");
+const closeBtn = document.querySelector(".close-btn");
+
+document.querySelectorAll(".cert-image").forEach(img => {
+  img.addEventListener("click", () => {
+    modal.style.display = "block";
+    modalImg.src = img.src;
+  });
+});
+
+closeBtn.onclick = () => {
+  modal.style.display = "none";
+};
+
+modal.onclick = (e) => {
+  if (e.target !== modalImg) {
+    modal.style.display = "none";
+  }
+};
+
+const form = document.querySelector(".contact-form");
+const status = document.getElementById("form-status");
+const button = form.querySelector(".form-submit");
+const text = button.querySelector(".btn-text");
+const loader = button.querySelector(".btn-loader");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  // Show loader
+  text.style.display = "none";
+  loader.style.display = "inline-block";
+
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      status.textContent = "Message sent successfully!";
+      status.classList.add("show");
+      form.reset();
+    } else {
+      status.textContent = "Something went wrong. Try again.";
+      status.classList.add("show");
+    }
+
+  } catch (error) {
+    status.textContent = "Network error. Please try again.";
+    status.classList.add("show");
+  }
+
+  // Reset button
+  loader.style.display = "none";
+  text.style.display = "inline";
+});
