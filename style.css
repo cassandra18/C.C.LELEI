@@ -302,6 +302,16 @@ nav {
   max-width: 580px;
 }
 
+.hero-tagline a {
+  color: var(--lilac); /* or use your exact purple variable */
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.hero-tagline a:hover {
+  color: var(--butter);
+}
+
 .hero-tagline strong {
   color: var(--lilac);
   font-weight: 600;
@@ -652,7 +662,7 @@ nav {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(10, 20, 40, 0.75);
+  background: rgba(1, 13, 36, 0.75);
   /* darkness level */
   z-index: 1;
 }
@@ -664,19 +674,25 @@ nav {
 }
 
 .project-card:nth-child(1) {
-  background-image: url("images/electrical_energy_output.png");
+  background-image: url("images/school_website.png");
+  
 }
 
 .project-card:nth-child(2) {
-  background-image: url("images/low-cost-renewable-sources-of-energy.jpg");
+  background-image: url("images/blogging.png");
 }
 
 .project-card:nth-child(3) {
-  background-image: url("images/leleimade_REMs.png");
+  background-image: url("images/electrical_energy_output.png");
+
 }
 
 .project-card:nth-child(4) {
-  background-image: url("images/school_website.png");
+  background-image: url("images/low-cost-renewable-sources-of-energy.jpg");
+}
+
+.project-card:nth-child(5) {
+    background-image: url("images/leleimade_REMs.png");
 }
 
 .project-card:hover {
