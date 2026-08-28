@@ -234,17 +234,117 @@ nav {
   max-width: 600px;
 }
 
-.hero-image {
+/* ── HERO PORTRAIT ── */
+
+.hero-image-wrap {
   flex: 1;
+  position: relative;
+  min-height: 620px;
+
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
 }
 
-.hero-image img {
-  width: 100%;
-  max-width: 350px;
-  border-radius: 20px;
+
+/* ── SOFT ATMOSPHERIC GLOW BEHIND THE PORTRAIT ── */
+
+.portrait-glow {
+  position: absolute;
+
+  width: 620px;
+  height: 620px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(201, 184, 232, 0.28) 0%,
+      rgba(192, 21, 43, 0.12) 35%,
+      rgba(26, 46, 90, 0) 72%
+    );
+
+  filter: blur(20px);
+
+  z-index: 0;
+
+  animation: portraitGlow 8s ease-in-out infinite alternate;
+}
+
+
+@keyframes portraitGlow {
+  from {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+
+  to {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+
+/* ── LARGE PORTRAIT ── */
+
+.hero-portrait {
+  position: relative;
+  z-index: 2;
+
+  width: 560px;
+  max-width: none;
+  height: 650px;
+
   object-fit: cover;
+  object-position: center top;
+
+  border-radius: 0;
+
+  filter: saturate(1.05) contrast(1.02);
+
+  /* Move portrait upward */
+  transform: translateY(-35px);
+
+  animation: portraitReveal 1s 0.2s ease both;
+
+
+  /* ── SOFT BOTTOM FADE ── */
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 75%,
+    rgba(0, 0, 0, 0.9) 84%,
+    rgba(0, 0, 0, 0.55) 92%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 75%,
+    rgba(0, 0, 0, 0.9) 84%,
+    rgba(0, 0, 0, 0.55) 92%,
+    transparent 100%
+  );
+}
+
+
+/* ── PORTRAIT ENTRANCE ANIMATION ── */
+
+@keyframes portraitReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-35px) scale(1);
+  }
 }
 
 .hero-name {
