@@ -1,9 +1,8 @@
 # Hey, I'm Cassandra. 👋
 
 I'm an electrical engineer who writes code and thinks in systems.  
-Currently finishing my degree, running two startups under **LeleiMade Co. Ltd**, and looking for the kind of work that actually matters.
-
----
+I am a graduate Electrical Engineer from DeKUT, a Graduate Software Engineer from ALX, and a graduate AI Career Essentials adnd Prompt Engineering from ALX Africa as well.
+I am running two startups under **Unified Energy Systems Engineering Ltd. (UNESys Engineering)** with two other male friends who are also Graduate Electrical Engineers.
 
 ### What I do
 
