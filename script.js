@@ -3,7 +3,7 @@
 // ── TYPEWRITER ──
 const words = [
   "An Electrical Engineer.",
-  "A Software Developer.",
+  "A Software Engineer.",
   "An AI Specialist.",
   "A Founder & Visionary.",
   "A Problem Solver."
