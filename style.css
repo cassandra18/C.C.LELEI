@@ -95,11 +95,19 @@ nav {
   min-height: 100vh;
   background: var(--deep-blue);
   position: relative;
-  overflow: hidden;
+
+  /* Allow the transition to extend below the hero */
+  overflow: visible;
+
   display: flex;
   align-items: center;
+
   padding: 68px 8% 0;
+
+  z-index: 2;
 }
+
+
 
 .hero-bg {
   position: absolute;
@@ -232,6 +240,57 @@ nav {
 .hero-text {
   flex: 1;
   max-width: 600px;
+}
+
+/* ── HERO PORTRAIT ── */
+
+.hero-image-wrap {
+  flex: 1;
+  position: relative;
+  min-height: 620px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Allows the portrait to visually extend beyond its area */
+  overflow: visible;
+}
+
+/* Soft atmospheric glow behind the portrait */
+.portrait-glow {
+  position: absolute;
+
+  width: 620px;
+  height: 620px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(201, 184, 232, 0.28) 0%,
+      rgba(192, 21, 43, 0.12) 35%,
+      rgba(26, 46, 90, 0) 72%
+    );
+
+  filter: blur(20px);
+
+  z-index: 0;
+
+  animation: portraitGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes portraitGlow {
+  from {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+
+  to {
+    transform: scale(1.05);
+    opacity: 1;
+  }
 }
 
 /* ── HERO PORTRAIT ── */
@@ -512,143 +571,753 @@ nav {
   }
 }
 
-/* ── ABOUT ── */
+/* ─────────────────────────────────────────
+   ABOUT SECTION
+───────────────────────────────────────── */
+
 #about {
+  position: relative;
+  overflow: hidden;
+
   background: var(--cream);
-  padding: 100px 8%;
+
+  padding: 115px 8% 140px;
+
+  color: var(--gray-dark);
+
+  isolation: isolate;
 }
+
+
+
+
+
+/* IMPORTANT:
+   Remove the heavy blue bottom transition completely.
+*/
+
+.about-transition-bottom {
+  display: none;
+}
+
+/* ─────────────────────────────────────────
+   BACKGROUND ATMOSPHERE
+───────────────────────────────────────── */
+
+.about-atmosphere {
+  position: absolute;
+
+  width: 700px;
+  height: 450px;
+
+  left: -220px;
+  top: 30%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(44, 74, 138, 0.10) 0%,
+      rgba(201, 184, 232, 0.06) 40%,
+      transparent 75%
+    );
+
+  filter: blur(30px);
+
+  z-index: -1;
+
+  pointer-events: none;
+}
+
+
+/* ─────────────────────────────────────────
+   DECORATIVE SHAPES
+───────────────────────────────────────── */
+
+.about-shapes {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+.about-shape {
+  position: absolute;
+
+  opacity: 0.18;
+}
+
+
+/* Small circular ring */
+
+.about-ring {
+  border: 1px solid var(--blue-mid);
+
+  border-radius: 50%;
+
+  background: transparent;
+}
+
+
+.about-ring-left {
+  width: 74px;
+  height: 74px;
+
+  top: 23%;
+  left: 5%;
+
+  opacity: 0.15;
+}
+
+
+.about-ring-right {
+  width: 210px;
+  height: 210px;
+
+  top: 38%;
+  right: -90px;
+
+  opacity: 0.10;
+}
+
+
+/* Rotated square */
+
+.about-square {
+  width: 86px;
+  height: 86px;
+
+  top: 22%;
+  right: 8%;
+
+  border: 1px solid var(--lilac);
+
+  border-radius: 10px;
+
+  transform: rotate(14deg);
+
+  opacity: 0.16;
+
+  animation: aboutFloat 10s ease-in-out infinite alternate;
+}
+
+
+/* Small diamond */
+
+.about-diamond {
+  width: 12px;
+  height: 12px;
+
+  top: 31%;
+  right: 13%;
+
+  background: var(--cherry);
+
+  transform: rotate(45deg);
+
+  opacity: 0.8;
+}
+
+
+/* Dotted grid */
+
+.about-dots {
+  position: absolute;
+
+  width: 95px;
+  height: 95px;
+
+  opacity: 0.22;
+
+  background-image:
+    radial-gradient(
+      circle,
+      var(--blue-mid) 1.4px,
+      transparent 1.4px
+    );
+
+  background-size: 12px 12px;
+}
+
+
+.about-dots-left {
+  top: 17%;
+  left: 3%;
+}
+
+
+@keyframes aboutFloat {
+
+  from {
+    transform: rotate(14deg) translateY(0);
+  }
+
+  to {
+    transform: rotate(20deg) translateY(14px);
+  }
+
+}
+
+
+/* ─────────────────────────────────────────
+   CONTENT LAYER
+───────────────────────────────────────── */
+
+.about-heading,
+.about-grid {
+  position: relative;
+
+  z-index: 3;
+}
+
+
+/* ─────────────────────────────────────────
+   SECTION LABEL
+───────────────────────────────────────── */
 
 .section-label {
   font-family: 'DM Mono', monospace;
+
   font-size: 0.75rem;
+
   letter-spacing: 0.18em;
+
   text-transform: uppercase;
+
   color: var(--cherry);
+
   font-weight: 500;
-  margin-bottom: 0.5rem;
+
+  margin-bottom: 0.8rem;
 }
+
+
+/* ─────────────────────────────────────────
+   SECTION TITLE
+───────────────────────────────────────── */
 
 .section-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+
+  font-size: clamp(2.4rem, 5vw, 4rem);
+
   font-weight: 700;
-  line-height: 1.15;
+
+  line-height: 1.1;
+
   color: var(--deep-blue);
+
   margin-bottom: 1rem;
 }
 
+
+/* ─────────────────────────────────────────
+   ABOUT GRID
+───────────────────────────────────────── */
+
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
   gap: 5rem;
+
   align-items: center;
-  margin-top: 3.5rem;
+
+  margin-top: 4rem;
 }
+
+
+/* ─────────────────────────────────────────
+   IMAGE WRAPPER
+───────────────────────────────────────── */
 
 .about-image-wrap {
   position: relative;
+
+  isolation: isolate;
+
+  padding: 0.5rem;
 }
 
-.about-image-card img {
-  width: 100%;
+
+/* Blue atmospheric glow behind image */
+
+.about-image-glow {
+  position: absolute;
+
+  width: 115%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
+
+  left: -7.5%;
+  top: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(44, 74, 138, 0.28) 0%,
+      rgba(26, 46, 90, 0.15) 35%,
+      rgba(201, 184, 232, 0.10) 55%,
+      transparent 76%
+    );
+
+  filter: blur(45px);
+
+  z-index: -1;
+
+  pointer-events: none;
 }
+
+
+/* ─────────────────────────────────────────
+   CCL INSIDE IMAGE
+───────────────────────────────────────── */
 
 .about-initials {
-  font-family: 'Playfair Display', serif;
-  font-size: 6rem;
-  font-weight: 900;
-  color: rgba(26, 46, 90, 0.15);
   position: absolute;
+
+  left: 22px;
+  bottom: 18px;
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 3.2rem;
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  letter-spacing: -0.05em;
+
+  color: rgba(255, 248, 240, 0.023);
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  /*
+    Makes the letters interact softly
+    with the photograph underneath.
+  */
+  mix-blend-mode: screen;
+
+  text-shadow:
+    0 2px 15px rgba(26, 46, 90, 0.18);
 }
 
-.about-image-badge {
-  position: absolute;
-  bottom: -1.5rem;
-  right: -1.5rem;
-  background: var(--cherry);
-  color: var(--white);
-  padding: 20px 24px;
-  font-family: 'Playfair Display', serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  line-height: 1.3;
-  text-align: center;
-}
 
-.about-image-badge span {
-  display: block;
-  font-size: 1.6rem;
-  font-weight: 900;
-}
+/* ─────────────────────────────────────────
+   GOLD STRIPE
+───────────────────────────────────────── */
 
 .about-image-stripe {
   position: absolute;
+
   top: 1.5rem;
   left: -1.5rem;
+
   width: 3rem;
   height: 70%;
-  background: var(--butter);
-  opacity: 0.7;
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--butter),
+      rgba(245, 230, 163, 0.25)
+    );
+
+  opacity: 0.75;
+
+  z-index: 5;
+
+  box-shadow:
+    0 0 30px rgba(245, 230, 163, 0.14);
 }
+
+
+/* ─────────────────────────────────────────
+   IMAGE CARD
+───────────────────────────────────────── */
+
+.about-image-card {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #17294F 0%,
+      #253D72 38%,
+      #3C4D78 68%,
+      #1A2E5A 100%
+    );
+
+  box-shadow:
+    0 30px 80px rgba(26, 46, 90, 0.20),
+    0 0 45px rgba(44, 74, 138, 0.12);
+}
+
+
+/* ─────────────────────────────────────────
+   IMAGE
+───────────────────────────────────────── */
+
+.about-image-card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 24px;
+
+  filter:
+    saturate(0.96)
+    contrast(1.02)
+    brightness(1.01);
+
+  position: relative;
+
+  z-index: 1;
+
+  transition:
+    transform 0.6s ease,
+    filter 0.4s ease;
+}
+
+
+/* ─────────────────────────────────────────
+   BLUE TINT
+───────────────────────────────────────── */
+
+.about-image-tint {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(26, 46, 90, 0.24) 0%,
+      rgba(44, 74, 138, 0.10) 38%,
+      transparent 70%,
+      rgba(26, 46, 90, 0.20) 100%
+    );
+
+  mix-blend-mode: multiply;
+
+  opacity: 0.65;
+}
+
+
+/* Image hover */
+
+.about-image-card:hover img {
+  transform: scale(1.025);
+
+  filter:
+    saturate(1)
+    contrast(1.03)
+    brightness(1.02);
+}
+
+
+/* ─────────────────────────────────────────
+   GRADUATION BADGE
+───────────────────────────────────────── */
+
+.about-image-badge {
+  position: absolute;
+
+  bottom: -1.5rem;
+  right: -1.5rem;
+
+  background: var(--cherry);
+
+  color: var(--white);
+
+  padding: 20px 24px;
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 0.9rem;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  text-align: center;
+
+  z-index: 6;
+
+  box-shadow:
+    0 15px 35px rgba(26, 46, 90, 0.18);
+}
+
+
+.about-image-badge span {
+  display: block;
+
+  font-size: 1.6rem;
+
+  font-weight: 900;
+}
+
+
+/* ─────────────────────────────────────────
+   ABOUT TEXT
+───────────────────────────────────────── */
 
 .about-text {
   padding-left: 1rem;
+
+  max-width: 680px;
 }
+
+
+/* ─────────────────────────────────────────
+   PARAGRAPHS
+───────────────────────────────────────── */
 
 .about-paragraph {
   font-size: 1.05rem;
+
   line-height: 1.8;
+
   color: var(--gray-mid);
-  margin-bottom: 1.4rem;
+
+  margin-bottom: 1.5rem;
 }
+
 
 .about-paragraph strong {
   color: var(--deep-blue);
+
   font-weight: 600;
 }
 
+
 .about-paragraph em {
   color: var(--cherry);
+
   font-style: italic;
 }
+
+
+/* ─────────────────────────────────────────
+   CLOSING STATEMENT
+───────────────────────────────────────── */
 
 .about-closing {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+
+  font-size: 1.35rem;
+
   font-style: italic;
+
   color: var(--deep-blue);
+
   font-weight: 700;
-  margin-top: 2rem;
+
+  margin-top: 2.2rem;
+
   padding-left: 1.5rem;
+
   border-left: 3px solid var(--cherry);
 }
 
+
+/* ─────────────────────────────────────────
+   STATS
+───────────────────────────────────────── */
+
 .about-stats {
   display: flex;
-  gap: 2.5rem;
-  margin-top: 2rem;
+
+  gap: 2.8rem;
+
+  margin-top: 2.5rem;
 }
+
 
 .stat {
   text-align: center;
+
+  min-width: 90px;
 }
+
 
 .stat-num {
   font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
+
+  font-size: 2.5rem;
+
   font-weight: 900;
+
   color: var(--cherry);
+
   display: block;
+
+  line-height: 1;
 }
 
+
 .stat-label {
-  font-size: 0.78rem;
+  display: block;
+
+  margin-top: 0.45rem;
+
+  font-size: 0.75rem;
+
   color: var(--gray-mid);
-  letter-spacing: 0.06em;
+
+  letter-spacing: 0.08em;
+
   text-transform: uppercase;
+}
+
+
+/* ─────────────────────────────────────────
+   STAT DIVIDERS
+───────────────────────────────────────── */
+
+.stat + .stat {
+  position: relative;
+}
+
+
+.stat + .stat::before {
+  content: "";
+
+  position: absolute;
+
+  left: -1.4rem;
+  top: 10%;
+
+  width: 1px;
+  height: 80%;
+
+  background: rgba(26, 46, 90, 0.16);
+}
+
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+
+@media (max-width: 900px) {
+
+  #about {
+    padding: 120px 7% 130px;
+  }
+
+  .about-transition-top {
+    height: 130px;
+  }
+
+  .about-transition-bottom {
+    height: 100px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+
+    gap: 4rem;
+  }
+
+  .about-text {
+    padding-left: 0;
+  }
+
+  .about-image-card {
+    max-width: 650px;
+
+    margin: 0 auto;
+  }
+
+  .about-ring-right {
+    right: -120px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  #about {
+    padding: 100px 6% 115px;
+  }
+
+  .about-transition-top {
+    height: 100px;
+  }
+
+  .about-transition-bottom {
+    height: 80px;
+  }
+
+  .section-title {
+    font-size: 2.4rem;
+  }
+
+  .about-grid {
+    margin-top: 2.5rem;
+
+    gap: 3rem;
+  }
+
+  .about-image-badge {
+    right: 0;
+    bottom: -1rem;
+  }
+
+  .about-image-stripe {
+    left: -0.6rem;
+
+    width: 1.5rem;
+  }
+
+  .about-initials {
+    font-size: 4rem;
+
+    left: -0.5rem;
+  }
+
+  .about-ring-right {
+    width: 130px;
+    height: 130px;
+  }
+
+  .about-dots {
+    transform: scale(0.75);
+    transform-origin: top left;
+  }
+
+  .about-stats {
+    gap: 1.5rem;
+  }
+
+  .stat-num {
+    font-size: 2rem;
+  }
+
+  .stat + .stat::before {
+    left: -0.75rem;
+  }
+
 }
 
 /* ── SKILLS ── */
